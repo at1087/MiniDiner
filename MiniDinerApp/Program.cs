@@ -15,7 +15,11 @@ namespace MiniDinerApp
 
         private void Run(OrderManager orderManager_)
         {
-            Console.WriteLine("Welcome to %s, I am your order manager:\n", orderManager_.DinerName);
+            Console.WriteLine("Welcome to {0}, and this the Menus we offer:", orderManager_.DinerName);
+            Console.WriteLine();
+
+            string allMenus = orderManager_.GetAllMenus();
+            Console.WriteLine(allMenus);
 
             while (true)
             {
@@ -30,8 +34,9 @@ namespace MiniDinerApp
                 try
                 {
                     string output = orderManager_.Process(input);
-
-                    Console.WriteLine("The order is for: '{0}'", output);
+                    Console.WriteLine();
+                    Console.WriteLine("You ordered: '{0}'", output);
+                    Console.WriteLine();
                 }
                 catch (Exception)
                 {

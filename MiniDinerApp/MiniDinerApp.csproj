@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MenuContainer.cs" />
-    <Compile Include="MealFactory.cs" />
+    <Compile Include="MenuFactory.cs" />
     <Compile Include="MenuOffering.cs" />
     <Compile Include="MenuType.cs" />
     <Compile Include="DishTypes.cs" />

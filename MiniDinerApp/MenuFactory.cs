@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MiniDinerApp
 {
-    public class MealFactory<T>
+    public class MenuFactory<T>
     {
-        private MealFactory() { }
+        private MenuFactory() { }
 
         static readonly Dictionary<MenuType, Func<T>> Dict
              = new Dictionary<MenuType, Func<T>>();

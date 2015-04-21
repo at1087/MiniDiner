@@ -17,17 +17,17 @@ namespace MiniDinerApp
             const int InfinteOrders = int.MaxValue;
 
             // register types of meals per time
-            MealFactory<MenuOffering>.Register(MenuType.Morning, () => new MenuOffering(DishType.Entree, "eggs", OneOrder,
+            MenuFactory<MenuOffering>.Register(MenuType.Morning, () => new MenuOffering(DishType.Entree, "eggs", OneOrder,
                                                                                         DishType.Side, "Toast", OneOrder,
                                                                                         DishType.Drink, "coffee", InfinteOrders));
-            MealFactory<MenuOffering>.Register(MenuType.Night, () => new MenuOffering(DishType.Entree, "steak", OneOrder,
+            MenuFactory<MenuOffering>.Register(MenuType.Night, () => new MenuOffering(DishType.Entree, "steak", OneOrder,
                                                                                       DishType.Side, "potato", InfinteOrders,
                                                                                       DishType.Drink, "wine", OneOrder,
                                                                                       DishType.Dessert, "cake",  OneOrder));
 
             // create types of offerings
-            var morningOfferings = MealFactory<MenuOffering>.Create(MenuType.Morning);
-            var nightOfferings = MealFactory<MenuOffering>.Create(MenuType.Night);
+            var morningOfferings = MenuFactory<MenuOffering>.Create(MenuType.Morning);
+            var nightOfferings = MenuFactory<MenuOffering>.Create(MenuType.Night);
 
             // add to container singleton
             MenuContainer.GetInstance().Register(MenuType.Morning, morningOfferings);
@@ -108,6 +108,11 @@ namespace MiniDinerApp
             // remove ', ' if any
             var trimEnd = returnOutput.TrimEnd(' ');
             return trimEnd.TrimEnd(',');
+        }
+
+        public string GetAllMenus()
+        {
+            return MenuContainer.GetInstance().GetAllMenus(); ;
         }
     }
 }

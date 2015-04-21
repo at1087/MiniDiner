@@ -3,6 +3,8 @@
     public enum MenuType
     {
         Morning = 1,
-        Night
+        Night,
+        Lunch,
+        Brunch,
     }
 }

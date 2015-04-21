@@ -4,6 +4,8 @@ using System.Linq;
 
 namespace MiniDinerApp
 {
+    using System.Text;
+
     public class MenuOffering
     {
         private readonly IDictionary<DishType, string> _offerings;
@@ -50,6 +52,21 @@ namespace MiniDinerApp
             if (!_offerings.ContainsKey(dishType_)) throw new ArgumentException("Dish Type does not exist");
 
             return new Tuple<string, int>(_offerings[dishType_], _maxOrders[dishType_]); ;
+        }
+
+        public List<string> GetDishes()
+        {
+            var dishList = _offerings.Keys.ToList();
+            dishList.Sort();
+
+            var query = from dish in dishList
+                        let dishNo = (int)dish
+                        let dishName = dish.ToString()
+                        let dishItem = _offerings[dish]
+                        let multiple = _maxOrders[dish] > 1 ? " *" : ""
+                        select string.Format("{0} ({1})\t {2}{3}", dishNo, dishName, dishItem, multiple);
+
+            return query.ToList();
         }
     }
 }
